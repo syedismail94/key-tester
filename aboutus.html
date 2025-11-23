@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us | keytester.online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #10b981;
+      --accent-soft: rgba(16, 185, 129, 0.2);
+      --border: #4b5563;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 60%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    button:hover, .btn:hover {
+      background: #0da271;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.96));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+    }
+    .logo span {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.45);
+    }
+    nav { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    nav a {
+      font-size: 0.85rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: 0.15s;
+    }
+    nav a:hover {
+      border-color: var(--accent);
+      color: #ecfeff;
+      background: rgba(15, 118, 110, 0.25);
+    }
+    nav a.active {
+      border-color: var(--accent);
+      color: #ecfeff;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    /* Layout */
+    main { flex: 1; }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.6rem 0.9rem 2.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 0.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      margin-bottom: 0.4rem;
+    }
+    .hero p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #0b1220 0%, #020617 55%);
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.8);
+      padding: 1.4rem 1.3rem 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.3rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 0.15rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.2rem 0 0.5rem;
+    }
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .bullet-list li span.icon {
+      font-size: 0.8rem;
+      margin-top: 0.1rem;
+    }
+
+    .highlight-box {
+      margin-top: 0.6rem;
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.8rem;
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+    .highlight-box strong {
+      color: #e5e7eb;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+    .cta-secondary {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .cta-secondary a {
+      color: #6ee7b7;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at bottom, #020617 0%, #000 60%);
+      padding: 1rem 0.9rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-left { font-weight: 600; }
+    .footer-links { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .footer-links a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-container">
+    <!-- Link back to homepage -->
+    <a href="index.html#home" class="logo"><span>keytester.online</span></a>
+    <nav>
+<a href="">Home</a>
+      
+<a href="aboutus.html">About Us</a>
+      
+<a href="contactus.html">Contact Us</a>
+
+        </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page">
+    <section class="hero">
+      <p class="pill">About keytester.online</p>
+      <h1>About Syed Ismail &amp; keytester.online</h1>
+      <p>
+        Hi, I’m <strong>Syed Ismail</strong> – a web developer and 
+        <strong>MSc Computer Science</strong> postgraduate who loves building
+        practical tools that make everyday work a little easier and a lot faster.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="grid">
+        <!-- Left column: story & mission -->
+        <div>
+          <h2>Who is behind keytester.online?</h2>
+          <p>
+            I’m Syed Ismail, a developer who enjoys turning ideas into simple,
+            fast, and useful web tools. Over time I’ve explored blogging, SEO
+            utilities, and small automation projects – and 
+            <strong>keytester.online</strong> is one more step in that journey.
+          </p>
+          <p>
+            With a background in <strong>MSc Computer Science</strong>, I focus on
+            building tools that are:
+          </p>
+          <ul class="bullet-list">
+            <li><span class="icon">✔️</span><span>Lightweight and fast in the browser.</span></li>
+            <li><span class="icon">✔️</span><span>Easy to understand even for non-technical users.</span></li>
+            <li><span class="icon">✔️</span><span>Focused on a single problem – no distractions.</span></li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>My goal:</strong> give you a clean, realistic keyboard, mouse
+            and touchpad tester that works on laptops and PCs without installing
+            any software.
+          </div>
+
+          <div class="cta-row">
+            <a href="index.html#win-kb" class="btn">Go back to Keyboard Tester</a>
+            <span class="cta-secondary">
+              or test your mouse on the
+              <a href="index.html#mouse-tester">Mouse Tester</a>.
+            </span>
+          </div>
+        </div>
+
+        <!-- Right column: about the tool -->
+        <div>
+          <h2>What does this tool do?</h2>
+          <p>
+            keytester.online lets you test:
+          </p>
+          <ul class="bullet-list">
+            <li><span class="icon">🎹</span><span><strong>Windows Keyboard</strong> – full layout with numpad, arrows and function keys.</span></li>
+            <li><span class="icon">⌨️</span><span><strong>Mac Keyboard</strong> – MacBook-style layout with command, option and control keys.</span></li>
+            <li><span class="icon">🖱️</span><span><strong>Mouse Buttons</strong> – left, right, middle and scroll events with live counters.</span></li>
+            <li><span class="icon">🖐️</span><span><strong>Laptop Touchpad</strong> – left / middle / right tap zones using the same counters.</span></li>
+          </ul>
+
+          <p>
+            Everything runs inside your browser – keystrokes and clicks are used
+            only to highlight keys and update counters. No login, no account, no
+            complicated setup.
+          </p>
+
+          <div class="tag-row">
+            <div class="tag">Made by Syed Ismail</div>
+            <div class="tag">MSc Computer Science</div>
+            <div class="tag">Web Developer</div>
+            <div class="tag">Testing Tools</div>
+            <div class="tag">Keyboard &amp; Mouse Utilities</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Why I built keytester.online</h2>
+      <p>
+        Many people face small but annoying problems: a key stops responding,
+        a mouse double-clicks, or a touchpad feels unreliable. Instead of
+        guessing, you should be able to <strong>see</strong> what your device is
+        doing in real time.
+      </p>
+      <p>
+        I built this tool to give:
+      </p>
+      <ul class="bullet-list">
+        <li><span class="icon">💻</span><span><strong>Home users</strong> a quick way to check if a keyboard or mouse is working before repair or replacement.</span></li>
+        <li><span class="icon">🛠️</span><span><strong>Technicians &amp; shops</strong> a simple page to use in front of customers while testing devices.</span></li>
+        <li><span class="icon">⌨️</span><span><strong>Gamers &amp; typists</strong> a way to verify every key, especially WASD, numpad and function keys.</span></li>
+      </ul>
+
+      <p>
+        As I continue improving keytester.online, I plan to keep it:
+      </p>
+      <ul class="bullet-list">
+        <li><span class="icon">🔒</span><span>Privacy-friendly – no unnecessary data collection.</span></li>
+        <li><span class="icon">⚡</span><span>Fast even on basic machines and browsers.</span></li>
+        <li><span class="icon">📱</span><span>Responsive – usable on both desktop and mobile screens.</span></li>
+      </ul>
+
+      <div class="cta-row">
+        <a href="index.html#home" class="btn">Back to Home &amp; Start Testing</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">@keytester.online2025-26</div>
+    <div class="footer-links">
+<a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termscondition.html">Terms &amp; Conditions</a>
+      <a href="disclaimer">Disclaimer</a>
+         </div>
+  </div>
+</footer>
+</body>
+</html>
