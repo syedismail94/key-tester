@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us | keytester.online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #10b981;
+      --accent-soft: rgba(16, 185, 129, 0.2);
+      --border: #4b5563;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 60%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    button:hover, .btn:hover {
+      background: #0da271;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.96));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+    }
+    .logo span {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.45);
+    }
+    nav { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    nav a {
+      font-size: 0.85rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: 0.15s;
+    }
+    nav a:hover {
+      border-color: var(--accent);
+      color: #ecfeff;
+      background: rgba(15, 118, 110, 0.25);
+    }
+    nav a.active {
+      border-color: var(--accent);
+      color: #ecfeff;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    /* Layout */
+    main { flex: 1; }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.6rem 0.9rem 2.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 0.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      margin-bottom: 0.4rem;
+    }
+    .hero p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .pill {
+      display: inline-flex;
+      padding: 0.15rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #0b1220 0%, #020617 55%);
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.8);
+      padding: 1.4rem 1.3rem 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.3rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.3rem;
+    }
+    label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.18rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.15s;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.4);
+    }
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .field-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.05rem;
+    }
+
+    .info-small {
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .contact-meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      line-height: 1.6;
+    }
+    .contact-meta strong {
+      color: #e5e7eb;
+    }
+    .contact-meta a {
+      color: #6ee7b7;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at bottom, #020617 0%, #000 60%);
+      padding: 1rem 0.9rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-left { font-weight: 600; }
+    .footer-links { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .footer-links a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-container">
+    <!-- Link back to homepage -->
+    <a href="index.html#home" class="logo"><span>keytester.online</span></a>
+    <nav>
+<a href="">Home</a>
+      
+<a href="aboutus.html">About Us</a>
+      
+<a href="contactus.html">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page">
+    <section class="hero">
+      <p class="pill">Contact keytester.online</p>
+      <h1>Contact Syed Ismail</h1>
+      <p>
+        Have a suggestion, bug report, or idea for a new feature? I’d love to hear from you.
+        Use the form below to get in touch with the creator of keytester.online.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="grid">
+        <!-- Left: contact form -->
+        <div>
+          <h2>Send a message</h2>
+          <p>
+            Fill in a few details so I can understand your request. I usually focus on
+            feedback related to the keyboard, mouse and touchpad testing tools.
+          </p>
+
+          <form action="#" method="post">
+            <div>
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required />
+            </div>
+
+            <div>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <div class="field-note">I’ll use this only to reply to your message.</div>
+            </div>
+
+            <div>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Example: Keyboard key not detected" required />
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Describe your issue, suggestion, or idea…" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+          </form>
+
+          <p class="info-small">
+            Note: This is a simple front-end contact page. If you want, you can later
+            connect this form to your email or backend service to store and manage messages.
+          </p>
+        </div>
+
+        <!-- Right: info about you + site links -->
+        <div>
+          <h2>About the creator</h2>
+          <p class="contact-meta">
+            keytester.online is created by <strong>Syed Ismail</strong>, a
+            <strong>MSc Computer Science</strong> postgraduate and web developer who
+            enjoys building small, useful tools for everyday work.
+          </p>
+          <p class="contact-meta">
+            If you find any key that doesn’t highlight, a mouse button that is not detected,
+            or you want a new feature, please mention:
+          </p>
+
+          <ul class="contact-meta" style="list-style: disc; padding-left: 1.1rem; margin-top: 0.25rem;">
+            <li>Your operating system (Windows, macOS, etc.).</li>
+            <li>Your browser (Chrome, Edge, Firefox, etc.).</li>
+            <li>Which key, button, or device has the issue.</li>
+          </ul>
+
+          <p class="contact-meta">
+            You can also revisit the tools directly:
+          </p>
+          <ul class="contact-meta" style="list-style: none; padding-left: 0; margin-top: 0.1rem;">
+            <li>➡️ <a href="index.html#win-kb">Windows Keyboard Tester</a></li>
+            <li>➡️ <a href="index.html#mouse-tester">Mouse Tester with Tap Counter</a></li>
+            <li>➡️ <a href="index.html#touchpad-tester">Laptop Touchpad Tester</a></li>
+          </ul>
+
+          <div class="tag-row">
+            <div class="tag">Web Developer</div>
+            <div class="tag">MSc Computer Science</div>
+            <div class="tag">Keyboard &amp; Mouse Tools</div>
+            <div class="tag">Device Testing Utilities</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Before you contact</h2>
+      <p>
+        keytester.online runs fully in your browser. Some keys (like Fn, hardware sound keys,
+        or special laptop shortcuts) are sometimes handled directly by the operating system and
+        never sent to the website. In those cases, no online tester can detect them.
+      </p>
+      <p>
+        If you still feel something is wrong or confusing, send me a message with as much detail
+        as possible. I’ll use your feedback to improve the tool and make it more reliable and
+        user-friendly over time.
+      </p>
+
+      <div class="tag-row">
+        <div class="tag">Bug Reports Welcome</div>
+        <div class="tag">Feature Suggestions</div>
+        <div class="tag">UI / UX Feedback</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">@keytester.online2025-26</div>
+    <div class="footer-links">
+<a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termscondition.html">Terms &amp; Conditions</a>
+      <a href="disclaimer">Disclaimer</a>    </div>
+  </div>
+</footer>
+</body>
+</html>
