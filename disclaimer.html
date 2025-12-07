@@ -120,6 +120,33 @@
       color: var(--muted);
       font-size: 0.9rem;
     }
+    .lang-switcher {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.lang-switcher:hover {
+  border-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.lang-switcher:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.35);
+}
+
+.lang-switcher option {
+  background: #020617;
+  color: #e5e7eb;
+}
+
     .footer-left { font-weight: 600; }
     .footer-links { display: flex; gap: 0.85rem; }
     .footer-links a {
@@ -127,6 +154,17 @@
       text-underline-offset: 3px;
     }
   </style>
+  <link rel="alternate" hreflang="en" href="https://keytester.online/" />
+  <link rel="alternate" hreflang="fil" href="https://keytester.online/ph.html" />
+  <link rel="alternate" hreflang="id" href="https://keytester.online/indo.html" />
+<link rel="alternate" hreflang="es" href="https://keytester.online/spanish.html" />
+<link rel="alternate" hreflang="pt-BR" href="https://keytester.online/brazil.html" />
+<link rel="alternate" hreflang="ar" href="https://keytester.online/arabic.html" />
+<link rel="alternate" hreflang="vi" href="https://keytester.online/vietnamese.html" />
+<link rel="alternate" hreflang="fil" href="https://keytester.online/filipino.html" />
+<link rel="alternate" hreflang="tr" href="https://keytester.online/turkish.html" />
+<link rel="alternate" hreflang="x-default" href="https://keytester.online/" />
+
 </head>
 
 <body>
@@ -144,7 +182,10 @@
         title="Choose language"
         onchange="window.location.href=this.value;">
   <option value="https://keytester.online/" selected>English</option>
-  <option value="https://keytester.online/spanish.html">Español</option>
+  <option value="https://keytester.online/indo.html" selected>
+  Bahasa Indonesia
+</option>
+ <option value="https://keytester.online/spanish.html">Español</option>
   <option value="https://keytester.online/brazil.html">Português (Brasil)</option>
   <option value="https://keytester.online/arabic.html">العربية</option>
   <option value="https://keytester.online/vietnamese.html">Tiếng Việt</option>
