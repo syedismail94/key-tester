@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Key Tester Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Key Tester of windows and mac keyboard with mouse tester and laptop touch pad tester tool in one place.">
+  <meta name="description" content="Key Tester of windows keyboard simply press any key it highlights that key live.">
 
 <!-- ⭐ PASTE FAVICON CODE HERE ⭐ -->
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -105,41 +105,6 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "keytester.online - Keyboard, Mouse & Touchpad Tester",
-  "url": "https://keytester.online",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "description": "keytester.online is a free browser-based tool to test Windows and Mac keyboards, mouse buttons, scroll wheel, and laptop touchpad in real time. Keys and buttons light up on screen as you press them.",
-  "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
-  "inLanguage": "en",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-<!-- Open Graph -->
-<!-- Open Graph Meta -->
-<meta property="og:title" content="Key Tester Online — Keyboard, Mouse & Touchpad Tester" />
-<meta property="og:description" content="Test your keyboard, mouse, touchpad and numpad in real time. Key highlighting, click counters & advanced hardware diagnostics." />
-<meta property="og:image" content="https://raw.githubusercontent.com/syedismail94/key-tester/main/keytestergraph.jpg" />
-<meta property="og:url" content="https://keytester.online" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="KeyTester.online" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<!-- Twitter Card Meta -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Key Tester Online — Keyboard, Mouse & Touchpad Tester">
-<meta name="twitter:description" content="Test your keyboard, mouse, touchpad and numpad in real-time with key highlighting and click counters. Free, fast & accurate hardware testing.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/syedismail94/key-tester/main/keytestergraph.jpg">
-<meta name="twitter:site" content="@keytesteronline">
-<meta name="twitter:creator" content="@keytesteronline">
 
   <style>
     :root {
@@ -156,8 +121,8 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background: #0f172a;   /* slate navy */
-color: #ffffff;      min-height: 100vh;
+background: white;   /* slate navy */
+   color: white;
       display: flex;
       flex-direction: column;
     }
@@ -375,8 +340,8 @@ color: #ffffff;      min-height: 100vh;
     }
 
     .key.active {
-      background: #ffffff;
-      color: #000000;
+      background:black;
+      color: black;
       box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
       transform: translateY(1px);
     }
@@ -395,126 +360,6 @@ color: #ffffff;      min-height: 100vh;
 
     .note { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
 
-    /* Center Mac keyboard */
-    #macKeyboard {
-      min-width: 0;
-      width: auto;
-      margin-inline: auto;
-    }
-
-    /* Mouse tester */
-    .controls {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .mouse-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .mouse-visual {
-      width: 180px;
-      height: 280px;
-      border-radius: 90px;
-      background: radial-gradient(circle at top, #020617 0%, #020617 60%);
-      border: 2px solid rgba(148, 163, 184, 0.8);
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.85);
-    }
-    .mouse-buttons-row {
-      display: flex;
-      gap: 0.3rem;
-      flex: 1;
-    }
-    .mouse-btn {
-      flex: 1;
-      border-radius: 40px 40px 20px 20px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: radial-gradient(circle at top, #020617 0%, #020617 60%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--text);
-      transition: 0.09s;
-    }
-    .mouse-btn.left  { border-radius: 40px 10px 20px 20px; }
-    .mouse-btn.right { border-radius: 10px 40px 20px 20px; }
-
-    .mouse-wheel {
-      width: 35px;
-      height: 55px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      margin: 0 auto;
-      background: #020617;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      transition: 0.1s;
-    }
-    .mouse-wheel-indicator {
-      width: 70%;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.95);
-      transform: translateY(0);
-    }
-    @keyframes wheelScroll {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(6px); }
-    }
-    .mouse-wheel.scroll-active {
-      background: var(--accent-soft);
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.7);
-    }
-    .mouse-wheel.scroll-active .mouse-wheel-indicator {
-      background: #ecfeff;
-      animation: wheelScroll 0.18s ease-in-out;
-    }
-    .mouse-active {
-      background: var(--accent-soft);
-      color: #f9fafb;
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.7);
-    }
-    .mouse-status {
-      font-size: 1rem;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .mouse-status span { color: #e5e7eb; font-weight: 600; }
-
-    .mouse-counters {
-      font-size: 1rem;
-      text-align: center;
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    .mouse-counters div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .mouse-counters span {
-      font-weight: 600;
-      font-size: 1.15rem;
-      color: var(--accent);
-    }
 
     .test-area {
       width: 100%;
