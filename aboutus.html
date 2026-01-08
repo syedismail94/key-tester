@@ -1,58 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>About Us</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<style>
-:root {
+  <style>
+    :root {
   --bg: #f8fafc;
-  --accent: #2563eb;
-  --accent-soft: rgba(37, 99, 235, 0.15);
+  --card: #ffffff;
   --border: #e5e7eb;
   --text: #111827;
   --muted: #6b7280;
+  --accent: #2563eb;
+  --key-bg: #f1f5f9;
+  --key-active: #2563eb;
+  --radius: 12px;
 }
 
 /* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* BODY */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  line-height: 1.6;
 }
 
-a { color: var(--accent); text-decoration: none; }
+/* LINKS & BUTTONS */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  opacity: 0.9;
+}
 
 /* HEADER */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
   background: #ffffff;
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.6rem;
 }
 
 .logo span {
   border: 2px solid var(--accent);
-  padding: 0.25rem 0.7rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 999px;
   font-weight: 700;
 }
@@ -64,51 +78,163 @@ nav {
 }
 
 nav a {
-  font-size: 0.85rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 nav a:hover {
   background: #eef2ff;
-  color: var(--text);
 }
 
-nav a.active {
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-/* LAYOUT */
-main { flex: 1; }
-
+/* PAGE */
 .page {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
-  padding: 1.6rem 0.9rem 2
+  padding: 1rem;
+}
 
+.hero {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* CARD */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* RECENT KEYS */
+.recent-keys {
+  display: flex;
+  gap: 0.3rem;
+  overflow-x: auto;
+  padding: 0.4rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.chip {
+  background: #eef2ff;
+  color: #1e3a8a;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.keyboard { padding: 0.45rem 0.5rem 0.55rem; background: #020617; border-radius: 0.8rem; border: 1px solid rgba(75, 85, 99, 0.9); min-width: 780px; } .kb-top-row { display: flex; gap: 0.18rem; margin-bottom: 0.3rem; align-items: center; } /* fine-tune F-row positions to feel closer to real keyboard */ .kb-top-row .key[data-code="Escape"] { margin-right: 0.6rem; /* gap after Esc */ } .kb-top-row .key[data-code="F1"] { margin-left: 0.2rem; /* approx between 1 & 2 */ } .kb-top-row .key[data-code="F5"] { margin-left: 0.4rem; /* approx above 6 */ } .kb-top-row .key[data-code="F9"] { margin-left: 0.4rem; /* approx between 9 & 0 */ } .kb-top-row .key[data-code="F12"] { margin-left: 0.4rem; /* approx above Backspace */ } .kb-main-wrapper { display: flex; gap: 0.45rem; align-items: flex-start; } .kb-main, .kb-nav, .kb-num { display: flex; flex-direction: column; gap: 0.22rem; } .kb-main { flex: 1.7; } .kb-nav { flex: 0.8; } .kb-num { flex: 0.9; } .kb-row, .kb-nav-row, .kb-num-row { display: flex; gap: 0.18rem; white-space: nowrap; } .key { height: var(--key-h); min-width: 40px; padding: 0 8px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.9); background: radial-gradient(circle at top, #020617 0%, #020617 70%); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #e5e7eb; user-select: none; text-align: center; box-shadow: 0 2px 0 #000, 0 0 0 1px rgba(15, 23, 42, 0.9); transition: 0.09s; } .key.w15 { min-width: 60px; } .key.w2 { min-width: 80px; } .key.w25 { min-width: 100px; } .key.w3 { min-width: 130px; } .key.w4 { min-width: 190px; } .key.h2 { height: calc(var(--key-h) * 2 + 0.22rem); align-items: flex-start; padding-top: 0.4rem; } .key-empty { visibility: hidden; border: none; box-shadow: none; } .key.active { background:black; color: red; box-shadow: 0 0 14px rgba(255, 255, 255, 0.7); transform: translateY(1px); } .key-audio { font-size: 1rem; padding-inline: 4px; } .key-info { margin-top: 0.4rem; font-size: 0.82rem; color: var(--muted); } .key-info span { color: #e5e7eb; font-weight: 600; } .note { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; } .test-area { width: 100%; height: 200px; border: 2px dashed rgba(148, 163, 184, 0.5); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin-top: 1rem; background: rgba(15, 23, 42, 0.3); transition: 0.3s; } .test-area:hover { border-color: var(--accent); background: rgba(15, 23, 42, 0.5); } .test-area p { color: var(--muted); font-size: 1rem; text-align: center; }
+/* WIDTH HELPERS */
+.w15 { min-width: 60px; }
+.w2 { min-width: 80px; }
+.w25 { min-width: 100px; }
+.w3 { min-width: 130px; }
+.w4 { min-width: 180px; }
+.h2 { height: 88px; }
+
+/* INFO SECTIONS */
+.info-section {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.info-section h2 {
+  font-size: 1rem;
+}
+
+.info-section p,
+.info-section li {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* FOOTER */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer-links a {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .keyboard {
+    min-width: 680px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboard {
+    min-width: 600px;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+}
+</style>
 
 </head>
 <body>
 <header class="site-header">
   <div class="nav-container">
-    <!-- Link back to homepage -->
-    <a href="index.html#home" class="logo"><span>keytester.online</span></a>
+    <a href="https://keytester.online/" class="logo"><span>Key Tester</span></a>
 <nav>
   <a href="https://keytester.online/">Home</a>
-
-  <!-- TOOLS / CATEGORY -->
   <a href="mouse-tester.html">Mouse Key Tester</a>
+  
   <a href="touchpad-key-tester.html">Touchpad Key Tester</a>
 
-  <!-- STATIC PAGES -->
-  <a href="aboutus.html" class="active">About Us</a>
+  <a href="aboutus.html">About Us</a>
   <a href="contactus.html">Contact Us</a>
 </nav>
   </div>
 </header>
-
 <main>
   <div class="page">
     <section class="hero">
@@ -224,11 +350,219 @@ main { flex: 1; }
   <div class="footer-inner">
     <div class="footer-left">@keytester.online2025-26</div>
     <div class="footer-links">
-<a href="privacypolicy.html">Privacy Policy</a>
+      <a href="privacypolicy.html">Privacy Policy</a>
       <a href="termscondition.html">Terms &amp; Conditions</a>
-      <a href="disclaimer">Disclaimer</a>
-         </div>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
   </div>
 </footer>
+
+<script>
+  /* ---------- KEYBOARD LOGIC (PC + MAC) ---------- */
+  const pcKeyboard = document.getElementById("pcKeyboard");
+  const macKeyboard = document.getElementById("macKeyboard");
+  const lastKeySpan = document.getElementById("last-key");
+  const recentKeysContainer = document.getElementById("recentKeys");
+
+  let recentKeys = [];
+  const MAX_RECENT = 10;
+
+  function setKeyActiveOnLayout(container, code, isActive) {
+    if (!container || !code) return;
+    const keyEl = container.querySelector('.key[data-code="' + code + '"]');
+    if (keyEl) {
+      if (isActive) keyEl.classList.add("active");
+      else keyEl.classList.remove("active");
+    }
+  }
+
+  function setKeyActive(code, isActive) {
+    setKeyActiveOnLayout(pcKeyboard, code, isActive);
+    setKeyActiveOnLayout(macKeyboard, code, isActive);
+  }
+
+  function labelForKey(e) {
+    if (e.code === "Space" || e.key === " ") return "Space";
+    if (e.key === "Meta") return "Win / Command";
+    if (e.key === "Alt") return "Alt / Option";
+    return e.key + " (" + e.code + ")";
+  }
+
+  function addRecentKey(label) {
+    if (!label) return;
+    recentKeys.unshift(label);
+    if (recentKeys.length > MAX_RECENT) {
+      recentKeys = recentKeys.slice(0, MAX_RECENT);
+    }
+    if (recentKeysContainer) {
+      recentKeysContainer.innerHTML = recentKeys
+        .map(k => `<div class="chip">${k}</div>`)
+        .join("");
+    }
+  }
+
+  document.addEventListener("keydown", e => {
+    setKeyActive(e.code, true);
+
+    // shared-key visual: Shift+Insert/Home/PageUp
+    if (e.code === "Insert" && e.shiftKey) {
+      setKeyActive("PrintScreen", true);
+    }
+    if (e.code === "Home" && e.shiftKey) {
+      setKeyActive("ScrollLock", true);
+    }
+    if (e.code === "PageUp" && e.shiftKey) {
+      setKeyActive("Pause", true);
+    }
+
+    const label = labelForKey(e);
+    if (lastKeySpan) lastKeySpan.textContent = label;
+    addRecentKey(label);
+  });
+
+  document.addEventListener("keyup", e => {
+    setKeyActive(e.code, false);
+
+    if (e.code === "Insert") setKeyActive("PrintScreen", false);
+    if (e.code === "Home") setKeyActive("ScrollLock", false);
+    if (e.code === "PageUp") setKeyActive("Pause", false);
+  });
+
+  window.addEventListener("blur", () => {
+    document.querySelectorAll(".key.active")
+      .forEach(el => el.classList.remove("active"));
+  });
+
+  // click on key → quick flash (helps Fn, audio, etc.)
+  document.addEventListener("click", e => {
+    const keyEl = e.target.closest(".key");
+    if (!keyEl) return;
+    keyEl.classList.add("active");
+    setTimeout(() => keyEl.classList.remove("active"), 150);
+  });
+
+  /* ---------- MOUSE + TOUCHPAD LOGIC ---------- */
+  const mouseLeft = document.getElementById("mouseLeft");
+  const mouseRight = document.getElementById("mouseRight");
+  const mouseWheel = document.getElementById("mouseWheel");
+  const mouseActionSpan = document.getElementById("mouseAction");
+  const leftCountSpan = document.getElementById("leftCount");
+  const rightCountSpan = document.getElementById("rightCount");
+  const middleCountSpan = document.getElementById("middleCount");
+  const scrollCountSpan = document.getElementById("scrollCount");
+  const resetMouseBtn = document.getElementById("resetMouseBtn");
+  const testModeBtn = document.getElementById("testModeBtn");
+  const testArea = document.getElementById("testArea");
+  const touchpadLeft = document.getElementById("touchpadLeft");
+  const touchpadMiddle = document.getElementById("touchpadMiddle");
+  const touchpadRight = document.getElementById("touchpadRight");
+
+  let leftCount = 0;
+  let rightCount = 0;
+  let middleCount = 0;
+  let scrollCount = 0;
+  let scrollTimeout;
+  let testModeActive = false;
+
+  function updateMouseCounters() {
+    leftCountSpan.textContent = leftCount;
+    rightCountSpan.textContent = rightCount;
+    middleCountSpan.textContent = middleCount;
+    scrollCountSpan.textContent = scrollCount;
+  }
+
+  function clearMouseButtons() {
+    mouseLeft.classList.remove("mouse-active");
+    mouseRight.classList.remove("mouse-active");
+    if (touchpadLeft) touchpadLeft.classList.remove("tp-active");
+    if (touchpadMiddle) touchpadMiddle.classList.remove("tp-active");
+    if (touchpadRight) touchpadRight.classList.remove("tp-active");
+  }
+
+  function exitTestMode() {
+    testModeActive = false;
+    testModeBtn.textContent = "Start Test Mode";
+    testArea.innerHTML = "<p>Click, right-click, and scroll here to test your mouse</p>";
+    testArea.style.borderColor = "rgba(148, 163, 184, 0.5)";
+    testArea.style.background = "rgba(15, 23, 42, 0.3)";
+  }
+
+  function startTestMode() {
+    testModeActive = true;
+    testModeBtn.textContent = "Exit Test Mode";
+    testArea.innerHTML = "<p>Test Mode Active - Click all mouse buttons and scroll to complete the test</p>";
+    testArea.style.borderColor = "var(--accent)";
+    testArea.style.background = "rgba(16, 185, 129, 0.1)";
+    leftCount = rightCount = middleCount = scrollCount = 0;
+    updateMouseCounters();
+  }
+
+  function toggleTestMode() {
+    if (testModeActive) exitTestMode();
+    else startTestMode();
+  }
+
+  function resetMouseCounters() {
+    leftCount = rightCount = middleCount = scrollCount = 0;
+    updateMouseCounters();
+    mouseActionSpan.textContent = "None";
+    clearMouseButtons();
+    if (testModeActive) exitTestMode();
+  }
+
+  document.addEventListener("mousedown", e => {
+    clearMouseButtons();
+    if (e.button === 0) {
+      leftCount++;
+      mouseLeft.classList.add("mouse-active");
+      if (touchpadLeft) touchpadLeft.classList.add("tp-active");
+      mouseActionSpan.textContent = "Left button down";
+    } else if (e.button === 2) {
+      rightCount++;
+      mouseRight.classList.add("mouse-active");
+      if (touchpadRight) touchpadRight.classList.add("tp-active");
+      mouseActionSpan.textContent = "Right button down";
+    } else if (e.button === 1) {
+      middleCount++;
+      if (touchpadMiddle) touchpadMiddle.classList.add("tp-active");
+      mouseActionSpan.textContent = "Middle button down";
+    }
+    updateMouseCounters();
+  });
+
+  document.addEventListener("mouseup", e => {
+    if (e.button === 0) {
+      mouseLeft.classList.remove("mouse-active");
+      if (touchpadLeft) touchpadLeft.classList.remove("tp-active");
+      mouseActionSpan.textContent = "Left button up";
+    } else if (e.button === 2) {
+      mouseRight.classList.remove("mouse-active");
+      if (touchpadRight) touchpadRight.classList.remove("tp-active");
+      mouseActionSpan.textContent = "Right button up";
+    } else if (e.button === 1) {
+      if (touchpadMiddle) touchpadMiddle.classList.remove("tp-active");
+      mouseActionSpan.textContent = "Middle button up";
+    }
+  });
+
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  document.addEventListener("wheel", e => {
+    scrollCount++;
+    updateMouseCounters();
+    mouseActionSpan.textContent =
+      "Scroll " + (e.deltaY > 0 ? "down" : "up") + " (" + e.deltaY + ")";
+    mouseWheel.classList.add("scroll-active");
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      mouseWheel.classList.remove("scroll-active");
+    }, 180);
+  });
+
+  resetMouseBtn.addEventListener("click", resetMouseCounters);
+  testModeBtn.addEventListener("click", toggleTestMode);
+
+  updateMouseCounters();
+</script>
 </body>
 </html>
