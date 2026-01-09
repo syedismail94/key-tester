@@ -171,25 +171,34 @@ nav a:hover {
 .w4 { min-width: 180px; }
 .h2 { height: 88px; }
 
-/* INFO SECTIONS */
-.info-section {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem;
-  margin-top: 1rem;
+/* ===============================
+   FIX LIST OVERLAP IN INFO SECTION
+   =============================== */
+
+.info-section ul {
+  list-style: none;          /* remove default bullets */
+  padding-left: 0;
+  margin-top: 0.4rem;
 }
 
-.info-section h2 {
-  font-size: 1rem;
-}
-
-.info-section p,
 .info-section li {
+  position: relative;
+  padding-left: 2rem;        /* space for number/emoji */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;          /* IMPORTANT: prevents overlap */
   font-size: 0.88rem;
   color: var(--muted);
 }
 
+/* If emojis or numbers are inside <li> text */
+.info-section li::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-weight: 600;
+  color: var(--accent);
+}
 /* FOOTER */
 .site-footer {
   background: #ffffff;
@@ -323,6 +332,14 @@ nav a:hover {
   .hero p {
     font-size: 0.9rem;
   }
+  .touchpad-visual {
+  width: 100%;
+}
+
+.touchpad-body {
+  height: 180px;
+}
+
 }
 </style>
 
@@ -380,7 +397,7 @@ nav a:hover {
   </p>
   <p><strong>Follow these simple steps:</strong></p>
   <ul style="margin-left:1.1rem; margin-top:0.25rem; color:var(--muted); font-size:0.87rem; line-height:1.5;">
-    <li>1️⃣ Open this page on your laptop (touchpad required).</li>
+<li data-step="1️⃣">Open this page on your laptop (touchpad required).</li>
     <li>2️⃣ Tap once anywhere on the page to activate the touchpad tester.</li>
     <li>3️⃣ Perform a <strong>one-finger tap</strong> – the tap counter will increase instantly.</li>
     <li>4️⃣ Try a <strong>two-finger tap</strong> to test right-click gesture support.</li>
