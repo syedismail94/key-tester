@@ -346,12 +346,21 @@ nav a:hover {
       <p>Use your laptop touchpad here – single tap, two-finger tap and scroll. Left / middle / right zones will highlight.</p>
 
       <div class="touchpad-container">
-        <div class="touchpad-visual">
-          <div class="touchpad-surface">
-            One-finger tap = left click.  
-            Two-finger tap = right click (on many laptops).  
-            Some devices support middle click with extra gestures.
-          </div>
+<div class="touchpad-visual">
+  <div class="touchpad-body">
+    <div class="touchpad-surface">
+      One-finger tap = left click.  
+      Two-finger tap = right click.  
+      Some devices support middle click.
+    </div>
+
+    <div class="touchpad-buttons-row">
+      <div class="touchpad-btn" id="touchpadLeft">Left</div>
+      <div class="touchpad-btn" id="touchpadMiddle">Middle</div>
+      <div class="touchpad-btn" id="touchpadRight">Right</div>
+    </div>
+  </div>
+</div>
           <div class="touchpad-buttons-row">
             <div class="touchpad-btn" id="touchpadLeft">Left Tap Zone</div>
             <div class="touchpad-btn" id="touchpadMiddle">Middle Tap Zone</div>
