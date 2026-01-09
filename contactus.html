@@ -173,6 +173,111 @@ nav a:hover {
   font-size: 0.88rem;
   color: var(--muted);
 }
+/* ===============================
+   CONTACT PAGE STYLES
+   =============================== */
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.2rem;
+}
+
+/* Form fields */
+form {
+  margin-top: 0.6rem;
+}
+
+form > div {
+  margin-bottom: 0.8rem;
+}
+
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: inherit;
+  background: #ffffff;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Small helper text */
+.field-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+/* Submit button spacing */
+form button {
+  margin-top: 0.4rem;
+}
+
+/* Right column text */
+.contact-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+/* Tag styles */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.tag {
+  background: #eef2ff;
+  color: #1e3a8a;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Small info text */
+.info-small {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* Pill text */
+.pill {
+  display: inline-block;
+  background: #eef2ff;
+  color: #1e3a8a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
 
 /* FOOTER */
 .site-footer {
@@ -216,6 +321,10 @@ nav a:hover {
   .hero p {
     font-size: 0.9rem;
   }
+  .grid {
+  grid-template-columns: 1fr;
+}
+
 }
 </style>
 
