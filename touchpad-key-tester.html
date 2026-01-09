@@ -378,22 +378,26 @@ nav a:hover {
       <h1>Laptop Touchpad Key Tester Online</h1>
       <p>Use your laptop touchpad here – single tap, two-finger tap and scroll. Left / middle / right zones will highlight.</p>
 
-      <div class="touchpad-container">
-<div class="touchpad-visual">
-  <div class="touchpad-body">
-    <div class="touchpad-surface">
-      One-finger tap = left click.  
-      Two-finger tap = right click.  
-      Some devices support middle click.
+<div class="touchpad-container">
+  <div class="touchpad-visual">
+    <div class="touchpad-body">
+
+      <div class="touchpad-surface">
+        One-finger tap = left click.  
+        Two-finger tap = right click.  
+        Some devices support middle click.
+      </div>
+
+      <!-- ✅ MUST BE INSIDE -->
+      <div class="touchpad-buttons-row">
+        <div class="touchpad-btn" id="touchpadLeft">Left</div>
+        <div class="touchpad-btn" id="touchpadMiddle">Middle</div>
+        <div class="touchpad-btn" id="touchpadRight">Right</div>
+      </div>
+
     </div>
   </div>
 </div>
-          <div class="touchpad-buttons-row">
-            <div class="touchpad-btn" id="touchpadLeft">Left Tap Zone</div>
-            <div class="touchpad-btn" id="touchpadMiddle">Middle Tap Zone</div>
-            <div class="touchpad-btn" id="touchpadRight">Right Tap Zone</div>
-          </div>
-        </div>
         <p class="note">
           Touchpad taps/clicks use the same counters as the mouse tester above.  
           Middle tap / three-finger tap only highlights if your OS sends a real middle mouse click.
