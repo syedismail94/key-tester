@@ -14,17 +14,20 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   
 <link rel="canonical" href="https://keytester.online/touchpad-key-tester.html">
-<style>
-:root {
+  <style>
+    :root {
   --bg: #f8fafc;
-  --accent: #2563eb;
-  --accent-soft: rgba(37, 99, 235, 0.15);
+  --card: #ffffff;
   --border: #e5e7eb;
   --text: #111827;
   --muted: #6b7280;
-  --key-h: 44px;
+  --accent: #2563eb;
+  --key-bg: #f1f5f9;
+  --key-active: #2563eb;
+  --radius: 12px;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -35,37 +38,42 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
-  display: flex;
-  flex-direction: column;
+  line-height: 1.6;
 }
 
-a { color: var(--accent); text-decoration: none; }
+/* LINKS & BUTTONS */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
 
 button {
   background: var(--accent);
   color: #fff;
   border: none;
-  padding: 0.55rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
 }
 
-button:hover { opacity: 0.9; }
+button:hover {
+  opacity: 0.9;
+}
 
 /* HEADER */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
   background: #ffffff;
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,7 +82,7 @@ button:hover { opacity: 0.9; }
 
 .logo span {
   border: 2px solid var(--accent);
-  padding: 0.25rem 0.7rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 999px;
   font-weight: 700;
 }
@@ -86,27 +94,25 @@ nav {
 }
 
 nav a {
-  font-size: 0.85rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.7rem;
   border-radius: 999px;
+  font-size: 0.85rem;
 }
 
 nav a:hover {
   background: #eef2ff;
 }
 
-/* LAYOUT */
+/* PAGE */
 .page {
   max-width: 1200px;
   margin: auto;
-  padding: 1.2rem 0.9rem 2.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  padding: 1rem;
 }
 
 .hero {
   text-align: center;
+  margin-bottom: 1.2rem;
 }
 
 .hero h1 {
@@ -114,173 +120,118 @@ nav a:hover {
 }
 
 .hero p {
-  font-size: 0.95rem;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 /* CARD */
 .card {
-  background: #ffffff;
-  border-radius: 1rem;
+  background: var(--card);
+  border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-  padding: 1.3rem;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .card h2 {
-  font-size: 1.3rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
 }
 
 .card p {
-  font-size: 0.95rem;
   color: var(--muted);
-  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
 }
 
 /* RECENT KEYS */
 .recent-keys {
-  min-height: 32px;
   display: flex;
-  overflow-x: auto;
   gap: 0.3rem;
-  padding: 0.35rem;
-  border-radius: 0.55rem;
-  background: #f1f5f9;
+  overflow-x: auto;
+  padding: 0.4rem;
   border: 1px dashed var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
 }
 
 .chip {
-  border-radius: 999px;
-  padding: 0.18rem 0.6rem;
   background: #eef2ff;
   color: #1e3a8a;
-  font-size: 0.72rem;
-}
-
-/* =========================
-   KEYBOARD CSS (UNCHANGED)
-========================= */
-.keyboard-wrapper {
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  display: flex;
-  justify-content: center;
-}
-
-.keyboard {
-  padding: 0.45rem 0.5rem 0.55rem;
-  background: #020617;
-  border-radius: 0.8rem;
-  border: 1px solid rgba(75, 85, 99, 0.9);
-  min-width: 780px;
-}
-
-.kb-top-row,
-.kb-row,
-.kb-nav-row,
-.kb-num-row {
-  display: flex;
-  gap: 0.18rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
   white-space: nowrap;
 }
 
-.key {
-  height: var(--key-h);
-  min-width: 40px;
-  padding: 0 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(148, 163, 184, 0.9);
-  background: radial-gradient(circle at top, #020617 0%, #020617 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  user-select: none;
-  box-shadow: 0 2px 0 #000;
-}
+.keyboard { padding: 0.45rem 0.5rem 0.55rem; background: #020617; border-radius: 0.8rem; border: 1px solid rgba(75, 85, 99, 0.9); min-width: 780px; } .kb-top-row { display: flex; gap: 0.18rem; margin-bottom: 0.3rem; align-items: center; } /* fine-tune F-row positions to feel closer to real keyboard */ .kb-top-row .key[data-code="Escape"] { margin-right: 0.6rem; /* gap after Esc */ } .kb-top-row .key[data-code="F1"] { margin-left: 0.2rem; /* approx between 1 & 2 */ } .kb-top-row .key[data-code="F5"] { margin-left: 0.4rem; /* approx above 6 */ } .kb-top-row .key[data-code="F9"] { margin-left: 0.4rem; /* approx between 9 & 0 */ } .kb-top-row .key[data-code="F12"] { margin-left: 0.4rem; /* approx above Backspace */ } .kb-main-wrapper { display: flex; gap: 0.45rem; align-items: flex-start; } .kb-main, .kb-nav, .kb-num { display: flex; flex-direction: column; gap: 0.22rem; } .kb-main { flex: 1.7; } .kb-nav { flex: 0.8; } .kb-num { flex: 0.9; } .kb-row, .kb-nav-row, .kb-num-row { display: flex; gap: 0.18rem; white-space: nowrap; } .key { height: var(--key-h); min-width: 40px; padding: 0 8px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.9); background: radial-gradient(circle at top, #020617 0%, #020617 70%); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #e5e7eb; user-select: none; text-align: center; box-shadow: 0 2px 0 #000, 0 0 0 1px rgba(15, 23, 42, 0.9); transition: 0.09s; } .key.w15 { min-width: 60px; } .key.w2 { min-width: 80px; } .key.w25 { min-width: 100px; } .key.w3 { min-width: 130px; } .key.w4 { min-width: 190px; } .key.h2 { height: calc(var(--key-h) * 2 + 0.22rem); align-items: flex-start; padding-top: 0.4rem; } .key-empty { visibility: hidden; border: none; box-shadow: none; } .key.active { background:black; color: red; box-shadow: 0 0 14px rgba(255, 255, 255, 0.7); transform: translateY(1px); } .key-audio { font-size: 1rem; padding-inline: 4px; } .key-info { margin-top: 0.4rem; font-size: 0.82rem; color: var(--muted); } .key-info span { color: #e5e7eb; font-weight: 600; } .note { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; } .test-area { width: 100%; height: 200px; border: 2px dashed rgba(148, 163, 184, 0.5); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin-top: 1rem; background: rgba(15, 23, 42, 0.3); transition: 0.3s; } .test-area:hover { border-color: var(--accent); background: rgba(15, 23, 42, 0.5); } .test-area p { color: var(--muted); font-size: 1rem; text-align: center; }
+/* WIDTH HELPERS */
+.w15 { min-width: 60px; }
+.w2 { min-width: 80px; }
+.w25 { min-width: 100px; }
+.w3 { min-width: 130px; }
+.w4 { min-width: 180px; }
+.h2 { height: 88px; }
 
-.key.w15 { min-width: 60px; }
-.key.w2  { min-width: 80px; }
-.key.w25 { min-width: 100px; }
-.key.w3  { min-width: 130px; }
-.key.w4  { min-width: 190px; }
-.key.h2  { height: calc(var(--key-h) * 2 + 0.22rem); }
-
-.key.active {
-  background: black;
-  box-shadow: 0 0 14px rgba(255,255,255,0.7);
-  transform: translateY(1px);
-}
-
-/* TEST AREA */
-.test-area {
-  width: 100%;
-  height: 200px;
-  border: 2px dashed var(--border);
-  border-radius: 1rem;
-  background: #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.test-area p {
-  color: var(--muted);
-}
-
-/* MOUSE */
-.mouse-visual {
-  background: #f1f5f9;
-  border: 2px solid var(--border);
-}
-
-.mouse-btn {
-  background: #ffffff;
-  border: 1px solid var(--border);
-}
-
-.mouse-active,
-.mouse-wheel.scroll-active {
-  background: var(--accent-soft);
-  box-shadow: 0 0 12px rgba(37,99,235,0.5);
-}
-
-/* INFO */
+/* INFO SECTIONS */
 .info-section {
   background: #ffffff;
   border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 1rem;
-  border-radius: 0.9rem;
+  margin-top: 1rem;
+}
+
+.info-section h2 {
+  font-size: 1rem;
+}
+
+.info-section p,
+.info-section li {
+  font-size: 0.88rem;
+  color: var(--muted);
 }
 
 /* FOOTER */
 .site-footer {
-  border-top: 1px solid var(--border);
   background: #ffffff;
-  padding: 1rem;
+  border-top: 1px solid var(--border);
   margin-top: 2rem;
 }
 
 .footer-inner {
   max-width: 1200px;
   margin: auto;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 0.6rem;
   font-size: 0.85rem;
   color: var(--muted);
 }
 
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  .keyboard { min-width: 640px; }
+.footer-links a {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .keyboard {
+    min-width: 680px;
+  }
+
+  nav {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
-  .keyboard { min-width: 580px; }
+  .keyboard {
+    min-width: 600px;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
 }
 </style>
 
@@ -288,14 +239,12 @@ nav a:hover {
 <body>
 <header class="site-header">
   <div class="nav-container">
-    <a href="https://keytester.online/" class="logo"><span>keytester.online</span></a>
+    <a href="https://keytester.online/" class="logo"><span>Key Tester</span></a>
 <nav>
   <a href="https://keytester.online/">Home</a>
   <a href="mouse-tester.html">Mouse Key Tester</a>
-  <a href="mac-keyboard-tester.html">Mac Keyboard Tester</a>
-  <a href="touchpad-key-tester.html" class="active">Touchpad Key Tester</a>
-
-  <a href="aboutus.html">About Us</a>
+  <a href="touchpad-key-tester.html">Touchpad Key Tester</a>
+ <a href="aboutus.html">About Us</a>
   <a href="contactus.html">Contact Us</a>
 </nav>
   </div>
@@ -323,28 +272,28 @@ nav a:hover {
           Middle tap / three-finger tap only highlights if your OS sends a real middle mouse click.
         </p>
       </div>
-<!--
-<section id="how-it-works" class="info-section">
-  <h2>How Key Tester of keyboard, mouse and touchpad web tool Works</h2>
+      <section id="how-it-works" class="info-section">
+  <h2>How Laptop Touchpad Tester Works</h2>
   <p>
-    Key Tester of keyboard, mouse and touchpad this web tool runs 100% inside your browser. It highlights keys, mouse buttons, 
-    and touchpad zones in real time so you can quickly see what is working and what is not.
+    Laptop Touchpad Tester is a browser-based web tool that runs 100% inside your browser.
+    It helps you test your laptop touchpad gestures, taps, and multi-finger actions in real time by highlighting touch zones and counting supported taps.
   </p>
   <p><strong>Follow these simple steps:</strong></p>
   <ul style="margin-left:1.1rem; margin-top:0.25rem; color:var(--muted); font-size:0.87rem; line-height:1.5;">
-    <li>1️⃣ Open this page on your laptop or PC.</li>
-    <li>2️⃣ Click once anywhere on the page to make sure the browser is active.</li>
-    <li>3️⃣ Press any key on your <strong>Windows</strong> or <strong>Mac</strong> keyboard – the same key will light up on the on-screen keyboard.</li>
-    <li>4️⃣ Move to the <strong>Mouse Tester</strong> section and click left, right, middle, and scroll – counters will increase live.</li>
-    <li>5️⃣ Use the <strong>Touchpad Tester</strong> on laptops – one-finger tap, two-finger tap, and supported middle tap will highlight the zones.</li>
-    <li>6️⃣ If a key or button does not highlight here, it may be a hardware, OS, or browser limitation.</li>
+    <li>1️⃣ Open this page on your laptop (touchpad required).</li>
+    <li>2️⃣ Tap once anywhere on the page to activate the touchpad tester.</li>
+    <li>3️⃣ Perform a <strong>one-finger tap</strong> – the tap counter will increase instantly.</li>
+    <li>4️⃣ Try a <strong>two-finger tap</strong> to test right-click gesture support.</li>
+    <li>5️⃣ Use a <strong>two-finger scroll</strong> up or down – scrolling activity will be detected live.</li>
+    <li>6️⃣ If supported, try a <strong>three-finger tap</strong> or gesture – detected actions will highlight the touchpad zone.</li>
+    <li>7️⃣ If any tap or gesture does not respond, it may be limited by touchpad hardware, drivers, or operating system settings.</li>
   </ul>
   <p style="margin-top:0.5rem; font-size:0.82rem; color:var(--muted);">
-    You may freely use this tool to test your own keyboard, mouse, and touchpad. 
-    Do not use this tool to monitor, track, or record the activity of other people’s devices.
+    This touchpad tester is designed for personal laptop testing only.
+    Do not use this tool to monitor or record touch activity on other people’s devices.
   </p>
 </section>
--->
+
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">@keytester.online2025-26</div>
