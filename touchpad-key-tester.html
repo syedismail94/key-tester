@@ -216,50 +216,64 @@ nav a:hover {
    REALISTIC TOUCHPAD UI
    =============================== */
 
+/* ===============================
+   FIXED & CENTERED TOUCHPAD UI
+   =============================== */
+
 .touchpad-container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin: 2rem 0;
 }
 
+/* Outer wrapper to prevent overlap */
 .touchpad-visual {
-  width: 280px;
-  height: 190px;
-  background: linear-gradient(145deg, #020617, #020617);
-  border-radius: 18px;
-  border: 2px solid rgba(148, 163, 184, 0.6);
-  position: relative;
-  box-shadow:
-    inset 0 0 0 2px rgba(15, 23, 42, 0.8),
-    0 10px 20px rgba(0,0,0,0.2);
+  width: 320px;
+  max-width: 100%;
+  padding: 1rem;
+  background: #0f172a;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
 
-/* Touch Surface */
+/* Touchpad body */
+.touchpad-body {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(145deg, #020617, #020617);
+  border-radius: 1rem;
+  border: 2px solid rgba(148, 163, 184, 0.6);
+  overflow: hidden;
+}
+
+/* Touch surface */
 .touchpad-surface {
   position: absolute;
   top: 10px;
   left: 10px;
   right: 10px;
-  bottom: 45px;
-  border-radius: 12px;
+  bottom: 52px;
+  border-radius: 0.8rem;
   background: radial-gradient(circle at top, #0f172a, #020617);
   border: 1px solid rgba(148, 163, 184, 0.4);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #94a3b8;
   padding: 0.6rem;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-/* Click Zones */
+/* Click zones */
 .touchpad-buttons-row {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 42px;
+  height: 52px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   border-top: 1px solid rgba(148, 163, 184, 0.4);
@@ -278,17 +292,17 @@ nav a:hover {
   border-right: none;
 }
 
-/* Active Tap Effect */
+/* Active highlight */
 .tp-active {
-  background: #000000 !important;
+  background: #000 !important;
   color: #ff3b3b !important;
   box-shadow: inset 0 0 14px rgba(255,255,255,0.6);
 }
 
-/* Small Note Spacing */
+/* Centered note text */
 .note {
   text-align: center;
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
 }
 /* MOBILE */
 @media (max-width: 768px) {
