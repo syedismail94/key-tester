@@ -199,6 +199,22 @@ nav a:hover {
   font-weight: 600;
   color: var(--accent);
 }
+    /* Final stable list fix */
+.steps-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.6rem;
+}
+
+.steps-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
 /* FOOTER */
 .site-footer {
   background: #ffffff;
@@ -370,12 +386,6 @@ nav a:hover {
       Two-finger tap = right click.  
       Some devices support middle click.
     </div>
-
-    <div class="touchpad-buttons-row">
-      <div class="touchpad-btn" id="touchpadLeft">Left</div>
-      <div class="touchpad-btn" id="touchpadMiddle">Middle</div>
-      <div class="touchpad-btn" id="touchpadRight">Right</div>
-    </div>
   </div>
 </div>
           <div class="touchpad-buttons-row">
@@ -396,7 +406,7 @@ nav a:hover {
     It helps you test your laptop touchpad gestures, taps, and multi-finger actions in real time by highlighting touch zones and counting supported taps.
   </p>
   <p><strong>Follow these simple steps:</strong></p>
-  <ul style="margin-left:1.1rem; margin-top:0.25rem; color:var(--muted); font-size:0.87rem; line-height:1.5;">
+<ul class="steps-list">
 <li data-step="1️⃣">Open this page on your laptop (touchpad required).</li>
     <li>2️⃣ Tap once anywhere on the page to activate the touchpad tester.</li>
     <li>3️⃣ Perform a <strong>one-finger tap</strong> – the tap counter will increase instantly.</li>
